@@ -43,3 +43,6 @@
 /public/index.html
 /public/spa
 /public/nitrosend-logo*.png
+
+# Nitrosend-supplied, not mine to publish
+DESIGN.md

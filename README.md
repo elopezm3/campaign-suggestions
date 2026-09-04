@@ -8,7 +8,7 @@ each one gets suggestions with the numbers behind them.
 Dismissing a suggestion offers a different angle for the same audience.
 Accepting one creates a draft campaign and opens it.
 
-Built to [DESIGN.md](DESIGN.md), Nitrosend's visual system.
+Built to Nitrosend's own design system.
 
 ## Running it
 
@@ -40,10 +40,11 @@ without opening the page. This guide is also in the app itself, under
 **1. Connect**
 
 ```bash
-claude mcp add --transport http nitrosend https://nitrosend-feature-demo.fly.dev/mcp
+claude mcp add --transport http nitrosend http://localhost:3000/mcp
 ```
 
-Works in Claude Code, Claude Desktop, or any MCP client. No account, no key.
+Runs locally, so start Rails first. Works in Claude Code, Claude Desktop, or any
+MCP client. No account, no key.
 
 **2. Ask "What can I send today?"**
 
@@ -70,12 +71,6 @@ permanent, so it is for rejecting an idea rather than browsing.
 
 Three tools: `nitro_suggest_campaigns`, `nitro_dismiss_suggestion`,
 `nitro_draft_campaign`.
-
-Reset the demo data at any time:
-
-```bash
-fly ssh console -C "bin/rails db:seed"
-```
 
 ## Deploying
 
@@ -114,7 +109,6 @@ app/controllers/api/                  JSON API
 db/seeds.rb                           demo data, fixed RNG so it is repeatable
 frontend/src/assets/                  Tailwind 4 tokens and component CSS
 frontend/src/components/              Vue 3 components
-DESIGN.md                             the visual system
 ```
 
 ## Notes
