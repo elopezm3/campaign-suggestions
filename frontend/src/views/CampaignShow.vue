@@ -92,7 +92,7 @@ onMounted(async () => {
       >
         <div>
           <p class="font-mono text-sm text-muted">
-            Platform campaign show page with the campaign created
+            Campaign show page with the campaign created
           </p>
           <p class="mx-auto mt-2 max-w-[42ch] text-xs text-subtle">
             The editor, preview, audience picker and send controls already exist

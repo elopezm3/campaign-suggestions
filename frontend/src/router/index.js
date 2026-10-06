@@ -17,7 +17,7 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  document.title = `${to.meta.title ?? "Platform"} · Platform`
+  document.title = to.meta.title ?? "Suggested campaigns"
 })
 
 export default router

@@ -1,4 +1,4 @@
-# Platform feature demo: AI suggested campaigns
+# AI suggested campaigns
 
 A page that suggests campaigns to send today, based on past campaigns and how
 contacts have actually engaged. Contacts are grouped into audiences (Most
@@ -8,7 +8,7 @@ each one gets suggestions with the numbers behind them.
 Dismissing a suggestion offers a different angle for the same audience.
 Accepting one creates a draft campaign and opens it.
 
-Built to Platform's own design system.
+Built as a feature prototype for an email marketing platform.
 
 ## Running it
 
@@ -40,7 +40,7 @@ without opening the page. This guide is also in the app itself, under
 **1. Connect**
 
 ```bash
-claude mcp add --transport http platform http://localhost:3000/mcp
+claude mcp add --transport http campaign-suggestions http://localhost:3000/mcp
 ```
 
 Runs locally, so start Rails first. Works in Claude Code, Claude Desktop, or any
@@ -61,7 +61,7 @@ no need to dismiss your way down to it.
 **4. Try "Send it"**
 
 It will not, and it will tell you why. Drafting is where this stops. Sending is a
-separate approval a person performs in Platform after reviewing the audience and
+separate approval a person performs in the platform after reviewing the audience and
 the copy, so there is deliberately no tool here that can send.
 
 **5. Try "Not that one"**
@@ -124,7 +124,7 @@ frontend/src/components/              Vue 3 components
   computed from the data. Swapping in a model call means replacing the authored
   angles with a request built from the same facts.
 - The campaign screen you land on after drafting is a placeholder. That
-  surface already exists in Platform.
+  surface already exists in the platform.
 - Regeneration is manual here: the seed builds the suggestions and the Rebuild
   button recomputes them. In production this would run nightly, early enough
   that the brief is fresh when the day starts, plus on events that move the

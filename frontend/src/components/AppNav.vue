@@ -12,7 +12,7 @@ const dark = ref(false)
 const copied = ref(false)
 
 const connectCommand = computed(
-  () => `claude mcp add --transport http platform ${window.location.origin}/mcp`
+  () => `claude mcp add --transport http campaign-suggestions ${window.location.origin}/mcp`
 )
 
 async function copyCommand() {
@@ -28,7 +28,7 @@ async function copyCommand() {
 function applyTheme(value) {
   dark.value = value
   document.documentElement.classList.toggle("dark", value)
-  localStorage.setItem("platform-theme", value ? "dark" : "light")
+  localStorage.setItem("theme", value ? "dark" : "light")
 }
 
 function onKeydown(event) {
@@ -36,7 +36,7 @@ function onKeydown(event) {
 }
 
 onMounted(() => {
-  const saved = localStorage.getItem("platform-theme")
+  const saved = localStorage.getItem("theme")
   applyTheme(saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches)
   document.addEventListener("keydown", onKeydown)
 })
@@ -114,9 +114,7 @@ const MINE = [
       aria-label="Primary"
     >
       <div class="mb-7 flex items-center justify-between">
-        <!-- Two files rather than a filter: inverting would wreck the mark. -->
-        <img src="/platform-logo.png" alt="Platform" class="h-6 w-auto dark:hidden" />
-        <img src="/platform-logo-dark.png" alt="Platform" class="hidden h-6 w-auto dark:block" />
+        <span class="text-[17px] font-semibold text-default">Suggested campaigns</span>
 
         <button
           type="button"
@@ -167,7 +165,7 @@ const MINE = [
       </ul>
 
       <div class="mt-6 mb-2 flex items-baseline justify-between gap-3">
-        <p class="eyebrow">Existing Platform</p>
+        <p class="eyebrow">Existing product</p>
         <span class="meta-quiet">not wired up</span>
       </div>
 
@@ -194,7 +192,7 @@ const MINE = [
       </ul>
 
       <p class="mt-5 text-[13px] text-subtle">
-        Only the two above are new work. The rest is Platform as it ships today.
+        Only the two above are new work. The rest is the existing product as it ships today.
       </p>
 
       <div class="well well--sunken mt-auto p-4">

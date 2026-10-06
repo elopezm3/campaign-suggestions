@@ -1,7 +1,7 @@
 # MCP server for the suggested campaigns feature, over JSON-RPC on POST /mcp.
 #
 # Connect with:
-#   claude mcp add --transport http platform-demo https://<host>/mcp
+#   claude mcp add --transport http campaign-suggestions https://<host>/mcp
 #
 # Stateless: no session id is issued, so every request stands alone. The demo
 # has no auth because there is nothing to protect, nothing sends, and the data
@@ -44,7 +44,7 @@ class McpController < ActionController::API
                    "per audience is the point.\n\n" \
                    "This drafts only and there is no tool here that sends. If the " \
                    "operator asks to send, draft it and tell them plainly that it is " \
-                   "waiting as a draft: sending is a separate approval step in Platform " \
+                   "waiting as a draft: sending is a separate approval step in the platform " \
                    "(control_delivery), which a person performs after reviewing the " \
                    "audience and the copy. Never report a campaign as sent or scheduled.",
       inputSchema: {
@@ -90,7 +90,7 @@ class McpController < ActionController::API
     {
       protocolVersion: params.dig(:params, :protocolVersion) || PROTOCOL_VERSION,
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: "platform-suggested-campaigns", version: "0.1.0" }
+      serverInfo: { name: "suggested-campaigns", version: "0.1.0" }
     }
   end
 
@@ -152,7 +152,7 @@ class McpController < ActionController::API
     "One angle per audience is recommended on purpose; the alternatives are named " \
     "above so you can weigh them. Drafting any angle closes its audience, because " \
     "one campaign per audience is the point. This server drafts only: sending stays " \
-    "a deliberate human approval step in Platform."
+    "a deliberate human approval step in the platform."
   end
 
   def dismiss(id)
@@ -180,7 +180,7 @@ class McpController < ActionController::API
     "Created draft campaign ##{campaign.id}, \"#{campaign.name}\", subject " \
     "\"#{campaign.subject}\", audience #{campaign.audience_label}.\n" \
     "Status: draft. Nothing has been sent and nothing is scheduled. Sending is a " \
-    "separate approval step a person performs in Platform after reviewing the " \
+    "separate approval step a person performs in the platform after reviewing the " \
     "audience and the copy; this server cannot do it.\n" \
     "#{suggestion.segment.label} is now settled and will not offer further angles."
   end

@@ -39,7 +39,7 @@ class McpControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal "2.0", body["jsonrpc"]
     assert_equal "2025-03-26", body.dig("result", "protocolVersion")
-    assert_equal "platform-suggested-campaigns", body.dig("result", "serverInfo", "name")
+    assert_equal "suggested-campaigns", body.dig("result", "serverInfo", "name")
   end
 
   test "tools are advertised with schemas" do
@@ -130,7 +130,7 @@ class McpControllerTest < ActionDispatch::IntegrationTest
     names = rpc("tools/list").dig("result", "tools").map { |t| t["name"] }
 
     assert_empty names.grep(/send|schedule|deliver/),
-      "sending must stay a deliberate human step in Platform"
+      "sending must stay a deliberate human step in the platform"
   end
 
   test "acting on a suggestion twice is refused rather than duplicated" do

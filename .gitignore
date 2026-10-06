@@ -42,7 +42,6 @@
 # SPA build output, produced by the Docker build
 /public/index.html
 /public/spa
-/public/platform-logo*.png
 
-# Platform-supplied, not mine to publish
+# Supplied by the company, not mine to publish
 DESIGN.md

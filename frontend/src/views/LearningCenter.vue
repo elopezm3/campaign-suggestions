@@ -5,7 +5,7 @@ import AppNav from "@/components/AppNav.vue"
 import CopyCommand from "@/components/CopyCommand.vue"
 
 const connectCommand = computed(
-  () => `claude mcp add --transport http platform ${window.location.origin}/mcp`
+  () => `claude mcp add --transport http campaign-suggestions ${window.location.origin}/mcp`
 )
 
 // The order carries meaning here: each step depends on the one before it.
@@ -25,7 +25,7 @@ const STEPS = [
   {
     ask: "Send it",
     body: "It will not, and it will tell you why. Drafting is where this stops. " +
-          "Sending is a separate approval a person performs in Platform after " +
+          "Sending is a separate approval a person performs in the platform after " +
           "reviewing the audience and the copy, so there is deliberately no tool " +
           "here that can send.",
     emphasis: true
@@ -103,7 +103,7 @@ const TOOLS = [
         <section class="well well--sunken p-4">
           <p class="eyebrow mb-1.5">Nothing here sends</p>
           <p class="text-[13px] text-muted">
-            Every tool stops at a draft. That is not a limitation of the demo: Platform
+            Every tool stops at a draft. That is not a limitation of the demo: the platform
             already separates composing from approving, and a suggestion that could send
             itself would skip a gate the product deliberately has.
           </p>
